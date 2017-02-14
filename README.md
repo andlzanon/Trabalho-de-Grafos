@@ -5,6 +5,6 @@ Implementação dos algoritmos de Prim, Dijkstra e Twice Around em Phyton para a
 Para detalhes de implementação visite: http://grafostbg7.blogspot.com.br/
 
 Autores:
-André Levi Zanon
-Rodrigo Ferrari de Souza
-Victor Santos Ferrari
+André Levi Zanon;
+Rodrigo Ferrari de Souza;
+Victor Santos Ferrari.
