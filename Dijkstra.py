@@ -24,7 +24,7 @@ def Dijkstra(G, CopiaG, R1, R2, R3):
                 
         for i in G.neighbors(verticePesoMinimo):
             if G.node[i]['peso']>G.get_edge_data(verticePesoMinimo, i)['weight']+G.node[verticePesoMinimo]['peso']:
-                G.node[i]['peso'] = G.get_edge_data(verticePesoMinimo, i)['weight']
+                G.node[i]['peso'] =G.get_edge_data(verticePesoMinimo, i)['weight']+G.node[verticePesoMinimo]['peso']
                 Predecessor[i] = verticePesoMinimo
                 
         G.remove_node(verticePesoMinimo)
@@ -50,14 +50,29 @@ def Dijkstra(G, CopiaG, R1, R2, R3):
         
 
 G = nx.Graph()
-G =nx.read_weighted_edgelist('mulheres.txt')
+L = [('s','c', {'weight': 15}), ('s','a', {'weight': 18}), ('c','a', {'weight': 2}), ('a','b', {'weight': 9}), ('c','b', {'weight': 14}),
+    ('c','d', {'weight': 7}), ('b','d', {'weight': 10}), ('d','t', {'weight': 36}), ('b','t', {'weight': 28})]
+
+G.add_edges_from(L)
+pos = nx.spring_layout(G, k = 1, iterations=30) 
+nx.draw_networkx(G, pos)
+plt.show()
 CopiaG = nx.Graph()
-CopiaG = nx.read_weighted_edgelist('mulheres.txt')
-nos = G.nodes()
+CopiaG = G
+nos = G.nodes();
 R1 = nos[0]
 R2 = nos[1]
 R3 = nos[2]
-print("raiz 1", R1)
+Dijkstra(G, CopiaG, R1, R2, R3)
+
+#G =nx.read_weighted_edgelist('mulheres.txt')
+#CopiaG = nx.Graph()
+#CopiaG = nx.read_weighted_edgelist('mulheres.txt')
+#nos = G.nodes()
+#R1 = nos[0]
+#R2 = nos[1]
+#R3 = nos[2]
+#print("raiz 1", R1)
 #print("raiz 2", R2)
 #print("raiz 3", R3)
-Dijkstra(G, CopiaG, R1, R2, R3)
+#Dijkstra(G, CopiaG, R1, R2, R3)
